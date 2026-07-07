@@ -94,7 +94,7 @@ This repo does not:
 
 Do not put private source relationships, credentials, account data, unpublished or private materials, sensitive traces, client data, internal machinery, or personal-risk details into source cards intended for public release.
 
-Use synthetic examples for demos. For real work, maintain a separate redaction and publication review process before sharing any card outside the trusted context where it was created.
+Use synthetic examples for demos. For real work, maintain a separate redaction and publication review process before sharing any card outside the trusted context where it was created. Start with `docs/redaction-before-sharing-checklist.md`.
 
 ## Repository Layout
 
@@ -103,6 +103,7 @@ README.md
 START_HERE.html
 docs/field-guide.md
 docs/public-safety-boundary.md
+docs/redaction-before-sharing-checklist.md
 schemas/source-card.schema.json
 examples/source-card.example.json
 examples/source-card-minimal.example.json

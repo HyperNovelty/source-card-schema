@@ -15,6 +15,8 @@ Source cards are useful because they preserve provenance. They can also create r
 
 Review every field, including tags and rights notes. Confirm that the locator itself does not expose a private path, account, source, or unreleased material. Rendered HTML contains the card contents and should receive the same review as the JSON.
 
+Use `docs/redaction-before-sharing-checklist.md` for a practical redaction pass before any public release.
+
 ## What The Tool Cannot Decide
 
 The schema cannot decide whether a claim is true, whether material can be reused, whether publication is safe, or whether a legal or compliance obligation applies. It can only keep review information structured so that humans can make better decisions.
