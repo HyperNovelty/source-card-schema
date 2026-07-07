@@ -43,27 +43,27 @@ Source cards can help:
 Validate the full synthetic example:
 
 ```bash
-python3 scripts/validate_source_card.py examples/source-card.example.json
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/validate_source_card.py examples/source-card.example.json
 ```
 
 Validate the minimal synthetic example:
 
 ```bash
-python3 scripts/validate_source_card.py examples/source-card-minimal.example.json
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/validate_source_card.py examples/source-card-minimal.example.json
 ```
 
-Render a local HTML review page:
+Render a checked-in demo HTML review page:
 
 ```bash
-python3 scripts/render_source_card_html.py examples/source-card.example.json /tmp/source-card-example.html
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/render_source_card_html.py examples/source-card.example.json examples/rendered/source-card.example.html
 ```
 
-Open `/tmp/source-card-example.html` in a browser. The rendered page is static HTML and should open on Windows, macOS, or Linux.
+Open `examples/rendered/source-card.example.html` in a browser. The rendered page is static HTML and should open on Windows, macOS, or Linux.
 
 Run the tests:
 
 ```bash
-python3 -m unittest discover -s tests
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests
 ```
 
 ## Review Status
@@ -110,6 +110,10 @@ scripts/validate_source_card.py
 scripts/render_source_card_html.py
 tests/
 ```
+
+## Open Lab Fit
+
+This repo is part of the Hypernovelty Open Lab public proof footprint. See `docs/open-lab-positioning.md` for how source cards support agent receipts, workflow screens, verification literacy labs, school readiness review, and the umbrella survival kit.
 
 ## License
 

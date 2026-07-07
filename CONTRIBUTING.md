@@ -16,7 +16,7 @@ Run the validator, renderer, and unit tests before proposing changes:
 
 ```bash
 python3 scripts/validate_source_card.py examples/source-card.example.json
-python3 scripts/render_source_card_html.py examples/source-card.example.json /tmp/source-card-example.html
+python3 scripts/render_source_card_html.py examples/source-card.example.json examples/rendered/source-card.example.html
 python3 -m unittest discover -s tests
 ```
 

@@ -68,6 +68,7 @@ def render_card_html(card: dict[str, object], warnings: list[str] | None = None)
     if warnings:
         warning_items = "".join(f"<li>{esc(warning)}</li>" for warning in warnings)
         warning_html = f"<div class=\"warning\"><strong>Warning</strong><ul>{warning_items}</ul></div>"
+    warning_block = f"    {warning_html}\n" if warning_html else ""
 
     return f"""<!doctype html>
 <html lang="en">
@@ -143,8 +144,7 @@ def render_card_html(card: dict[str, object], warnings: list[str] | None = None)
   <main>
     <h1>{title}</h1>
     <p class="meta">Local source card review page. Status: <strong>{status}</strong>.</p>
-    {warning_html}
-    <table>
+{warning_block}    <table>
       <tbody>
         {"".join(rows)}
       </tbody>
