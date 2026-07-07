@@ -1,0 +1,15 @@
+{
+  "card_id": "sc-2026-0002",
+  "title": "Synthetic dataset note",
+  "source_type": "dataset",
+  "source_locator": "Synthetic Dataset Alpha, table 3",
+  "captured_at": "2026-07-06",
+  "as_of_date": "2026-07-06",
+  "claim_summary": "A synthetic dataset note records that table 3 lists monthly counts for a training example.",
+  "evidence_notes": [],
+  "confidence": "low",
+  "limitations": [],
+  "rights_notes": [],
+  "review_status": "draft",
+  "tags": []
+}

@@ -1,0 +1,25 @@
+{
+  "card_id": "sc-2026-0001",
+  "title": "Synthetic city water notice summary",
+  "source_type": "public_notice",
+  "source_locator": "https://example.invalid/public-notices/water-update-2026-07",
+  "captured_at": "2026-07-06T10:15:00Z",
+  "as_of_date": "2026-07-06",
+  "claim_summary": "A synthetic public notice says a city water maintenance window is expected to affect a small service area for one evening.",
+  "evidence_notes": [
+    "The synthetic notice names the affected service area and expected maintenance window.",
+    "The synthetic notice gives a public contact channel for residents seeking updated information."
+  ],
+  "confidence": "medium",
+  "limitations": [
+    "Example data only; not connected to a real city or notice.",
+    "The card does not verify whether the maintenance occurred.",
+    "The source locator is treated as text and is not fetched."
+  ],
+  "rights_notes": [
+    "Synthetic example created for documentation and tests.",
+    "No permission or reuse conclusion is implied for real public notices."
+  ],
+  "review_status": "reviewed",
+  "tags": ["synthetic", "public-notice", "local-review"]
+}

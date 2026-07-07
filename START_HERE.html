@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Source Card Schema - Start Here</title>
+  <style>
+    body {
+      color: #1f2933;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.55;
+      margin: 0;
+      background: #f7f8fa;
+    }
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background: #ffffff;
+      min-height: 100vh;
+    }
+    h1, h2 {
+      color: #111827;
+      line-height: 1.2;
+    }
+    code, pre {
+      background: #eef2f7;
+      border-radius: 4px;
+    }
+    code {
+      padding: 2px 5px;
+    }
+    pre {
+      overflow-x: auto;
+      padding: 14px;
+    }
+    .notice {
+      border-left: 4px solid #52616b;
+      padding: 10px 14px;
+      background: #f1f5f9;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Source Card Schema</h1>
+    <p>A local-only starter repo for turning links, documents, claims, and signals into durable source cards.</p>
+    <div class="notice">
+      <strong>Boundary:</strong> this tool does not fetch sources, verify claims, clear rights, provide advice, or publish anything. Treat source locators as text.
+    </div>
+    <h2>Start</h2>
+    <pre><code>python3 scripts/validate_source_card.py examples/source-card.example.json
+python3 scripts/render_source_card_html.py examples/source-card.example.json /tmp/source-card-example.html</code></pre>
+    <h2>Use</h2>
+    <p>Copy one of the synthetic examples, replace the field values with your own public-safe notes, validate the card, then render a local HTML review page.</p>
+    <h2>Public Safety</h2>
+    <p>Do not include private source relationships, credentials, account data, unpublished or private materials, sensitive traces, client data, or internal machinery in cards intended for public release.</p>
+    <h2>Next Files</h2>
+    <ul>
+      <li><code>README.md</code> for workflow and limits.</li>
+      <li><code>docs/field-guide.md</code> for field-by-field guidance.</li>
+      <li><code>docs/public-safety-boundary.md</code> for publication boundaries.</li>
+      <li><code>schemas/source-card.schema.json</code> for the schema.</li>
+    </ul>
+  </main>
+</body>
+</html>

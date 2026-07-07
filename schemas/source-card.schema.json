@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/source-card.schema.json",
+  "title": "Source Card",
+  "description": "A compact local provenance card for links, documents, claims, and signals.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "card_id",
+    "title",
+    "source_type",
+    "source_locator",
+    "captured_at",
+    "as_of_date",
+    "claim_summary",
+    "evidence_notes",
+    "confidence",
+    "limitations",
+    "rights_notes",
+    "review_status",
+    "tags"
+  ],
+  "properties": {
+    "card_id": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "source_type": { "type": "string", "minLength": 1 },
+    "source_locator": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Locator text only. Tools must not fetch this value."
+    },
+    "captured_at": { "type": "string", "minLength": 1 },
+    "as_of_date": { "type": "string", "minLength": 1 },
+    "claim_summary": { "type": "string", "minLength": 1 },
+    "evidence_notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "confidence": { "type": "string", "minLength": 1 },
+    "limitations": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "rights_notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "review_status": {
+      "type": "string",
+      "enum": ["draft", "reviewed", "needs_followup", "do_not_publish"]
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
