@@ -41,7 +41,7 @@ def render_list(items: list[str]) -> str:
     if not items:
         return "<p class=\"empty\">None recorded.</p>"
     rendered = "\n".join(f"<li>{esc(item)}</li>" for item in items)
-    return f"<ul>\n{rendered}\n</ul>"
+    return f"<ul class=\"check-list\">\n{rendered}\n</ul>"
 
 
 def render_card_html(card: dict[str, object], warnings: list[str] | None = None) -> str:
@@ -77,81 +77,60 @@ def render_card_html(card: dict[str, object], warnings: list[str] | None = None)
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Source Card Review - {title}</title>
   <style>
-    body {{
-      color: #1f2933;
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.55;
-      margin: 0;
-      background: #f7f8fa;
-    }}
-    main {{
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 36px 20px;
-      background: #ffffff;
-      min-height: 100vh;
-    }}
-    h1 {{
-      color: #111827;
-      margin-bottom: 6px;
-    }}
-    h2 {{
-      border-bottom: 1px solid #d8dee6;
-      color: #111827;
-      font-size: 1.1rem;
-      margin-top: 28px;
-      padding-bottom: 6px;
-    }}
-    .meta {{
-      color: #4b5563;
-      margin-top: 0;
-    }}
-    table {{
-      border-collapse: collapse;
-      margin-top: 24px;
-      width: 100%;
-    }}
-    th, td {{
-      border: 1px solid #d8dee6;
-      padding: 10px;
-      text-align: left;
-      vertical-align: top;
-    }}
-    th {{
-      background: #eef2f7;
-      width: 190px;
-    }}
-    .warning {{
-      background: #fff7ed;
-      border: 1px solid #fdba74;
-      margin: 18px 0;
-      padding: 12px 14px;
-    }}
-    .empty {{
-      color: #6b7280;
-      font-style: italic;
-    }}
-    footer {{
-      border-top: 1px solid #d8dee6;
-      color: #6b7280;
-      font-size: 0.92rem;
-      margin-top: 36px;
-      padding-top: 16px;
-    }}
+    :root {{ color-scheme: dark; --ink: #f7ead7; --muted: #d7c2a2; --paper: #fff7e8; --paper-ink: #261b12; --line: #6f5840; --accent: #f2b66d; --warn: #ffd08a; }}
+    * {{ box-sizing: border-box; }}
+    body {{ color: var(--ink); font-family: Georgia, "Times New Roman", serif; line-height: 1.6; margin: 0; background: #20150f; }}
+    body::before {{ content: ""; position: fixed; inset: 0; pointer-events: none; background: radial-gradient(circle at top left, rgba(242, 182, 109, 0.16), transparent 34rem); }}
+    main {{ max-width: 1080px; margin: 0 auto; padding: 32px 18px 44px; position: relative; }}
+    header {{ border: 1px solid var(--line); border-radius: 8px; margin-bottom: 18px; padding: 24px; background: linear-gradient(135deg, #3a2617, #251810); box-shadow: 0 18px 50px rgba(0,0,0,0.25); }}
+    h1 {{ color: var(--ink); font-size: clamp(2rem, 5vw, 4rem); line-height: 0.98; margin: 10px 0 14px; letter-spacing: 0; }}
+    h2 {{ color: var(--paper-ink); font-size: 1.02rem; line-height: 1.2; margin: 0 0 10px; }}
+    p {{ margin: 0; }}
+    section, .table-card {{ background: var(--paper); border: 1px solid #dfcaa8; border-radius: 8px; color: var(--paper-ink); padding: 18px; }}
+    .eyebrow {{ color: var(--accent); font-family: Arial, Helvetica, sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }}
+    .meta {{ color: var(--muted); margin: 0 0 14px; }}
+    .chips {{ display: flex; flex-wrap: wrap; gap: 8px; }}
+    .chip {{ border: 1px solid rgba(255,255,255,0.28); border-radius: 999px; color: var(--ink); display: inline-flex; font-family: Arial, Helvetica, sans-serif; font-size: 0.78rem; font-weight: 700; padding: 6px 10px; }}
+    .chip.warn {{ background: rgba(255, 208, 138, 0.18); color: #ffe2ac; }}
+    .chip.neutral {{ background: rgba(255,255,255,0.08); }}
+    .section-grid {{ display: grid; gap: 14px; grid-template-columns: repeat(2, minmax(0, 1fr)); }}
+    .table-card {{ margin-bottom: 14px; overflow-x: auto; }}
+    table {{ border-collapse: collapse; width: 100%; }}
+    th, td {{ border-bottom: 1px solid #dfcaa8; padding: 10px 8px; text-align: left; vertical-align: top; }}
+    tr:last-child th, tr:last-child td {{ border-bottom: 0; }}
+    th {{ color: #735230; font-family: Arial, Helvetica, sans-serif; font-size: 0.75rem; text-transform: uppercase; width: 190px; }}
+    .warning {{ background: #fff1d6; border: 1px solid #d99745; border-radius: 8px; color: var(--paper-ink); margin: 18px 0; padding: 12px 14px; }}
+    .check-list {{ margin: 0; padding-left: 1.2rem; }}
+    .check-list li {{ margin: 0.45rem 0; padding-left: 0.15rem; }}
+    .empty {{ color: #7a6a55; font-style: italic; }}
+    footer {{ color: var(--muted); font-family: Arial, Helvetica, sans-serif; font-size: 0.9rem; margin-top: 18px; }}
+    @media (max-width: 760px) {{ .section-grid {{ grid-template-columns: 1fr; }} header {{ padding: 20px; }} th {{ width: 150px; }} }}
+    @media print {{ body {{ background: #fff; color: #000; }} body::before {{ display: none; }} main {{ max-width: none; padding: 0; }} header, section, .table-card {{ box-shadow: none; break-inside: avoid; }} }}
   </style>
 </head>
 <body>
   <main>
-    <h1>{title}</h1>
-    <p class="meta">Local source card review page. Status: <strong>{status}</strong>.</p>
-{warning_block}    <table>
+    <header>
+      <p class="eyebrow">Hypernovelty Open Lab / Source Card</p>
+      <h1>{title}</h1>
+      <p class="meta">Local source card review page for synthetic/example source documentation.</p>
+      <div class="chips" aria-label="Source card status">
+        <span class="chip warn">Review status: {status}</span>
+        <span class="chip neutral">Confidence: {esc(card["confidence"])}</span>
+        <span class="chip neutral">Source not fetched</span>
+      </div>
+    </header>
+{warning_block}    <section class="table-card" aria-labelledby="summary-heading">
+      <h2 id="summary-heading">Summary Metadata</h2>
+      <table>
       <tbody>
         {"".join(rows)}
       </tbody>
-    </table>
-    {"".join(sections)}
+      </table>
+    </section>
+    <div class="section-grid">{"".join(sections)}</div>
     <footer>
-      This page was rendered locally from JSON. The source locator was treated as text and was not fetched or verified.
+      This page was rendered locally from JSON. The source locator was treated as text and was not fetched or verified; this is not a rights determination, publication approval, or factual certification.
     </footer>
   </main>
 </body>
